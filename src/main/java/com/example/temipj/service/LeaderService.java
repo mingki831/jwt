@@ -2,9 +2,8 @@ package com.example.temipj.service;
 
 import com.example.temipj.domain.employee.Employee;
 import com.example.temipj.domain.employee.Leader;
-import com.example.temipj.domain.member.Member;
+import com.example.temipj.domain.admin.Admin;
 import com.example.temipj.dto.responseDto.*;
-import com.example.temipj.dto.responseDto.LeadResponseDto;
 import com.example.temipj.dto.responseDto.LeaderResponseDto;
 import com.example.temipj.exception.CustomException;
 import com.example.temipj.exception.ErrorCode;
@@ -32,25 +31,28 @@ public class LeaderService {
         if (!tokenProvider.validateToken(request.getHeader("Refresh_Token"))) {
             throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
-        // 2. tokenProvider Class의 SecurityContextHolder에 저장된 Member 정보 확인
-        Member member = tokenProvider.getMemberFromAuthentication();
-        if (null == member) {
-            throw new CustomException(ErrorCode.MEMBER_NOT_FOUND);
+        // 2. tokenProvider Class의 SecurityContextHolder에 저장된 Admin 정보 확인
+        Admin admin = tokenProvider.getAdminFromAuthentication();
+        if (null == admin) {
+            throw new CustomException(ErrorCode.ADMIN_NOT_FOUND);
         }
         // 3. 직원 확인
         Employee employee = employeeService.isPresentEmployee(employeeId);
         if (null == employee) {
             throw new CustomException(ErrorCode.NOT_EXIST_EMPLOYEE);
         }
-
         // 4. 리더 체크 저장
-        Leader findLeaderSelect = leaderRepository.findByEmployeeIdAndMemberId(employee.getId(), member.getId());
+        Leader findLeaderSelect = leaderRepository.findByEmployeeIdAndAdminId(employee.getId(), admin.getId());
         if (null != findLeaderSelect) {
             leaderRepository.delete(findLeaderSelect);
+
+            employee.cancelLeader(employeeId);
+            employeeRepository.saveAndFlush(employee);
+
             return ResponseDto.success("리더 해제");
         }
         Leader leader = Leader.builder()
-                .member(member)
+                .admin(admin)
                 .employee(employee)
                 .build();
         leaderRepository.save(leader);
@@ -65,24 +67,21 @@ public class LeaderService {
         if (!tokenProvider.validateToken(request.getHeader("Refresh_Token"))) {
             throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
-        // 2. tokenProvider Class의 SecurityContextHolder에 저장된 Member 정보 확인
-        Member member = tokenProvider.getMemberFromAuthentication();
-        if (null == member) {
-            throw new CustomException(ErrorCode.MEMBER_NOT_FOUND);
+        // 2. tokenProvider Class의 SecurityContextHolder에 저장된 Admin 정보 확인
+        Admin admin = tokenProvider.getAdminFromAuthentication();
+        if (null == admin) {
+            throw new CustomException(ErrorCode.ADMIN_NOT_FOUND);
         }
 
-        ////////////////////////////////원래/////////////////////
-
-        List<Leader> leaderList = leaderRepository.findAllByMember(member);
+        List<Leader> leaderList = leaderRepository.findAllByAdmin(admin);
         List<LeaderResponseDto> LeaderResponseDtoList = new ArrayList<>();
-
 
         for (Leader leader : leaderList) {
             LeaderResponseDtoList.add(
                     LeaderResponseDto.builder()
 //                            .id(leader.getEmployee().getId())
 //                            .division(leader.getEmployee().getDivision())
-                            .department(leader.getEmployee().getDepartment())
+                            .department(leader.getEmployee().getDepartment().getDepartment())
                             .name(leader.getEmployee().getName())
                             .mobile_number(leader.getEmployee().getMobile_number())
                             .email(leader.getEmployee().getEmail())
@@ -90,7 +89,6 @@ public class LeaderService {
         }
         return LeadResponseDto.version(LeaderResponseDtoList);
     }
-////////////////////////////////원래/////////////////////
 
     //리더 검색
     @Transactional
@@ -103,7 +101,7 @@ public class LeaderService {
             LeaderResponseDtoList.add(
                     LeaderResponseDto.builder()
 //                            .id(employee.getId())
-                            .department(employee.getDepartment())
+                            .department(employee.getDepartment().getDepartment())
                             .name(employee.getName())
                             .mobile_number(employee.getMobile_number())
                             .email(employee.getEmail())

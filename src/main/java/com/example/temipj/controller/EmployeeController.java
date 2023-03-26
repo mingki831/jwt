@@ -5,6 +5,7 @@ import com.example.temipj.dto.requestDto.EmployeeRequestDto;
 import com.example.temipj.dto.responseDto.EmpResponseDto;
 import com.example.temipj.dto.responseDto.EmployeeResponseDto;
 import com.example.temipj.dto.responseDto.ResponseDto;
+import com.example.temipj.dto.responseDto.TestDto.ResponseFirstDto;
 import com.example.temipj.service.EmployeeService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -56,4 +57,11 @@ public class EmployeeController {
     public ResponseDto<?> search(@RequestParam(value = "keyword") String keyword, @AuthenticationPrincipal UserDetailsImpl userDetails){
         return employeeService.searchEmployee(keyword, userDetails);
     }
+
+    @GetMapping("/test")
+    public  ResponseDto<?>  test(){
+        return employeeService.test("R&D");
+    }
+
+
 }
