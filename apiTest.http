@@ -1,0 +1,11 @@
+GET http://localhost:8080/api/result
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate
+Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: keep-alive
+Content-Type: application/json
+Host: localhost:8080
+Origin: http://localhost:8080
+Referer: http://localhost:8080/
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
+
