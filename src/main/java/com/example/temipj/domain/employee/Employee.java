@@ -37,6 +37,13 @@ public class Employee extends Timestamped {
     @ManyToOne(fetch = FetchType.LAZY)
     private Department department; // 부서
 
+    @Column(nullable = false)
+    private String leader = "false";
+
+//    @JoinColumn(nullable = true)
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Admin admin;
+
 //    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    private List<Leader> leaderCheck;
 
@@ -53,5 +60,11 @@ public class Employee extends Timestamped {
 //        return !this.admin.equals(admin);
 //    }
 
+    public void updateLeader(Long Id) {
+        this.leader = "true";
+    }
 
+    public void cancelLeader(Long Id) {
+        this.leader = "false";
+    }
 }

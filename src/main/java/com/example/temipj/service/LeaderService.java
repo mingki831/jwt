@@ -8,6 +8,7 @@ import com.example.temipj.dto.responseDto.LeaderResponseDto;
 import com.example.temipj.exception.CustomException;
 import com.example.temipj.exception.ErrorCode;
 import com.example.temipj.jwt.TokenProvider;
+import com.example.temipj.repository.EmployeeRepository;
 import com.example.temipj.repository.LeaderRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
@@ -23,6 +24,7 @@ public class LeaderService {
     private final TokenProvider tokenProvider;
     private final LeaderRepository leaderRepository;
     private final EmployeeService employeeService;
+    private final EmployeeRepository employeeRepository;
 
     //리더 선택 및 해제
     @Transactional
@@ -56,6 +58,11 @@ public class LeaderService {
                 .employee(employee)
                 .build();
         leaderRepository.save(leader);
+
+        Employee employee1 = employeeRepository.findById(employeeId).get();
+        employee1.updateLeader(employeeId);
+        employeeRepository.saveAndFlush(employee1);
+
         return ResponseDto.success("리더 지정");
 
     }

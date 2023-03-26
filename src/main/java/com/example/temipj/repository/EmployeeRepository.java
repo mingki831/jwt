@@ -24,4 +24,21 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
             "OR p.email LIKE %:keyword% ORDER BY p.createdAt desc")
     List <Employee> searchEmp(@Param("keyword") String keyword);
 
+//    @Query(value = "SELECT p FROM Employee p WHERE p.leader = 'true'")
+//    List<Employee> findAllLeader();
+
+//    List<Employee> findByDivisionAndLeader(String division, String leader);
+    Employee findByDepartmentAndLeader(String department, String leader);
+
+    @Query(value = "SELECT a FROM Employee a LEFT JOIN Leader b ON a.id = b.employee.id WHERE a.leader = 'true'")
+    List<Employee> findAllLeader();
+
+    @Query( nativeQuery = true,
+            value = "select a.*  \n" +
+            "      from Employee a \n" +
+            "inner join department b on a.department_id = b.id \n" +
+            "inner join division c on b.division_id = c.id \n" +
+            "      where a.leader = 'true' \n" +
+            "        and c.division = :paramDivision ")
+    List<Employee> test(@Param("paramDivision") String paramDivision);
 }
