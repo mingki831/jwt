@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EmployeeResponseDto {
 
-//    private Long id;
+    private Long id;
 
     private String name; // 직원 이름
 

@@ -32,6 +32,11 @@ public class DepartmentController {
         return departmentService.getDepartmentAll();
     }
 
+    // 부서 조회
+   // @GetMapping(value = "/list/{divisionId}")
+    //public ResponseDto<?> getAll(){
+    //    return departmentService.getDepartmentAll();
+    //}
     // 부서 삭제
     @DeleteMapping("delete/{departmentId}")
     public ResponseDto<?>delete(@PathVariable Long departmentId,HttpServletRequest request){

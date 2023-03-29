@@ -159,6 +159,7 @@ public class EmployeeService {
 
             employeeResponseDtoList.add(
                     EmployeeResponseDto.builder()
+                            .id(employee.getId())
                             .name(employee.getName())
                             .birth(employee.getBirth())
                             .extension_number(employee.getExtension_number())

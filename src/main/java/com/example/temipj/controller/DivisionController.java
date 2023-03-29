@@ -24,7 +24,7 @@ public class DivisionController {
 
     // 팀 전체 조회
     @GetMapping(value = "/all")
-    public ResponseDto<?> getAll(){
+    public ResponseDto<?> getAll() {
         return divisionService.getDivisionAll();
     }
 
