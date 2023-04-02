@@ -1,6 +1,7 @@
 package com.example.temipj.service;
 
 import com.example.temipj.domain.admin.Admin;
+import com.example.temipj.domain.employee.Employee;
 import com.example.temipj.domain.news.News;
 import com.example.temipj.dto.requestDto.NewsRequestDto;
 import com.example.temipj.dto.responseDto.ChoiceNewsResponseDto;
@@ -15,7 +16,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +34,8 @@ public class NewsService {
     // 뉴스 등록
     @Transactional
     public ResponseDto<?> createNews(NewsRequestDto requestDto, HttpServletRequest request) {
+        LocalDate endTime = LocalDate.now().plusDays(7);
+
         // 1. 토큰 유효성 확인
         if (!tokenProvider.validateToken(request.getHeader("Refresh_Token"))) {
             return ResponseDto.fail(ErrorCode.INVALID_TOKEN.name(), ErrorCode.INVALID_TOKEN.getMessage());
@@ -47,6 +52,7 @@ public class NewsService {
         News news = News.builder()
                 .message(requestDto.getMessage())
                 .author(requestDto.getAuthor())
+                .end_date(endTime)
                 .choiceNews("false")
                 .admin(admin)
                 .build();
@@ -195,7 +201,10 @@ public class NewsService {
                             .author(news.getAuthor())
                             .build());
         }
-        return ChoiceNewsResponseDto.version(NewsResponseDtoList);
+        News version = newsRepository.findTop1ByOrderByModifiedAtDesc();
+        String recentVersion = version.getModifiedAt().format((DateTimeFormatter.ofPattern("yyyyMMdd")));
+
+        return ChoiceNewsResponseDto.version(recentVersion, NewsResponseDtoList);
     }
 
     // 뉴스 유무 확인 메서드 생성

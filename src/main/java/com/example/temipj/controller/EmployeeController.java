@@ -9,10 +9,11 @@ import com.example.temipj.dto.responseDto.TestDto.ResponseFirstDto;
 import com.example.temipj.service.EmployeeService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -77,8 +78,8 @@ public class EmployeeController {
 
     // 선택한 리더 목록 조회
     @GetMapping("/leader/all")
-    public ResponseDto<?> getLeaderAll() {
-        return employeeService.getLeaderAll();
+    public ResponseEntity<Map> getLeaderAll() {
+        return ResponseEntity.ok().body(employeeService.getLeaderAll());
     }
 
     //==============================================================

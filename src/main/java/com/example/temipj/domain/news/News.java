@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -36,6 +37,9 @@ public class News extends Timestamped {
 
     @Column(nullable = false)
     private String choiceNews = "false";
+
+    @Column(nullable = false)
+    private LocalDate end_date;
 
 //    private LocalDateTime expirationDateTime; // expirationDateTime 속성 추가
 

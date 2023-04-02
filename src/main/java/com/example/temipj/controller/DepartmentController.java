@@ -22,6 +22,7 @@ public class DepartmentController {
 
     // 하위부서 생성
     @PostMapping(value = "/create/{divisionId}")
+    @ResponseBody
     private ResponseDto<?> create(@PathVariable String divisionId, @RequestBody DepartmentRequestDto departmentRequestDto,
                                   HttpServletRequest request) {
         return departmentService.createDepart(divisionId, departmentRequestDto, request);
@@ -29,12 +30,14 @@ public class DepartmentController {
 
     // 하위부서 전체 조회
     @GetMapping(value = "/all")
+    @ResponseBody
     public ResponseDto<?> getAll() {
         return departmentService.getDepartmentAll();
     }
 
     // 특정 하위부터 조회
     @GetMapping(value = "/{id}")
+    @ResponseBody
     public ResponseDto<?> get(@PathVariable Long id) {
         return departmentService.getDepartment(id);
     }
@@ -46,6 +49,7 @@ public class DepartmentController {
                                  HttpServletRequest request) {
         return departmentService.updateDepartment(id, departmentRequestDto, request);
     }
+
 
     // 하위부서 삭제
     @DeleteMapping("delete/{departmentId}")

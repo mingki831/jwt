@@ -1,5 +1,6 @@
 package com.example.temipj.repository;
 
+import com.example.temipj.domain.employee.Employee;
 import com.example.temipj.domain.news.News;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -34,5 +35,9 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     // 선택한 뉴스 중에서 검색
 //    @Query(value = "SELECT p FROM News p WHERE p.choiceNews = 'true'")
 //    List <Choice> findAllByChoiceNews(@Param("keyword") String keyword);
+
+    News findTop1ByOrderByModifiedAtDesc();
+
+//    News findAllByNews();
 
 }
