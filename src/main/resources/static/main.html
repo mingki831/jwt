@@ -446,13 +446,11 @@
 <div class="main-image">
     <form id="deleteAdminForm" action="">
         <!--    <a href="login.html"><button id="deleteAdmin" class="deleteAdmin">회원탈퇴</button></a>-->
-        <button class="deleteAdmin" id="deleteAdmin" >회원탈퇴</button>
+        <button class="deleteAdmin" id="deleteAdmin">회원탈퇴</button>
     </form>
-    <form id="logoutForm">
+    <form id="logoutForm" onclick="location.href='login.html'">
         <!--    <button id="btn-logout">로그아웃</button>-->
-        <a href="login.html">
-            <button class="logout" id="logout" >로그아웃</button>
-        </a>
+        <button class="logout" id="logout">로그아웃</button>
     </form>
     메인 이미지
 </div>
@@ -465,45 +463,28 @@
         <tr>
             <td>
                 <table>
-                    <thead>
-                    <tr>
-                        <th>상위부서</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tbodyDivision">
-                    </tbody>
+                    <thead>상위부서</thead>
+                    <tbody id="tbodyDivision"></tbody>
                 </table>
             </td>
             <td>
                 <table>
-                    <thead>
-                    <tr>
-                        <th>하위부서</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tbodyDepartment">
-                    </tbody>
+                    <thead>하위부서</thead>
+                    <tbody id="tbodyDepartment"></tbody>
                 </table>
             </td>
             <td>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>직원</th>
-                        </tr>
-                    </thead>
+                    <thead>직원</thead>
                     <tbody id="tbodyEmployee">
                     <tbody id="tbodyEmployeeRegister">
                         <input type="button" class="employeeRegister" id="employeeRegister" value="직원 등록">
                     </tbody>
+                </table>
             </td>
             <td>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>리더목록</th>
-                        </tr>
-                    </thead>
+                    <thead>리더목록</thead>
                     <tbody id="tbodyLeader">
                     </tbody>
                 </table>
@@ -599,13 +580,8 @@
                 </div>
             </div>
 
-</table>
-<br/>
-
-<div class="goto-news">
-    <form>
-        <a href="newsList.html"><input type="button" class="btn btn-primary" value="뉴스페이지"></a>
-    </form>
+<div class="goto-news" onclick="location.href='newsList.html'">
+    <button class="goto-news-botton">뉴스페이지 바로가기</button>
 </div>
 
 </body>

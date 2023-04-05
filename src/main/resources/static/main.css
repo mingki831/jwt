@@ -2,6 +2,15 @@
   border: 1px solid #444444;
 }
 
+/* .table {
+  background-color: #E7E9E9;
+  border: none;
+  border-radius: 15px;
+  
+  width: 200px;
+  height: 200px;
+} */
+
 .main-image {
   height: 250px;
   background-color: #D0F3F4;
@@ -52,4 +61,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.goto-news-botton {
+  background-color: #C1DCDE;
+  padding: 40px 180px;
+  border-radius: 20px;
+  border: none;
 }
