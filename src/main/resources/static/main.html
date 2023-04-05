@@ -458,39 +458,35 @@
 <!-- content -->
 <div class="content-title"><h2>Department</h2></div>
 
-<div class="table">
-    <table>
-        <tr>
-            <td>
-                <table>
-                    <thead>상위부서</thead>
-                    <tbody id="tbodyDivision"></tbody>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <thead>하위부서</thead>
-                    <tbody id="tbodyDepartment"></tbody>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <thead>직원</thead>
-                    <tbody id="tbodyEmployee">
-                    <tbody id="tbodyEmployeeRegister">
-                        <input type="button" class="employeeRegister" id="employeeRegister" value="직원 등록">
-                    </tbody>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <thead>리더목록</thead>
-                    <tbody id="tbodyLeader">
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </table>
+<div class="dep-table">
+    <div class="high-dep">
+        <table>
+            <thead><h4>상위부서</h4></thead>
+            <tbody id="tbodyDivision"></tbody>
+        </table>
+    </div>
+    <div class="low-dep">
+        <table>
+            <thead><h4>하위부서</h4></thead>
+            <tbody id="tbodyDepartment"></tbody>
+        </table>
+    </div>
+    <div class="employee">
+        <table>
+            <thead><h4>직원</h4></thead>
+            <tbody id="tbodyEmployee">
+            <tbody id="tbodyEmployeeRegister">
+                <input type="button" class="employeeRegister" id="employeeRegister" value="직원 등록">
+            </tbody>
+        </table>
+    </div>
+    <div class="leader-list">
+        <table>
+            <thead><h4>리더목록</h4></thead>
+            <tbody id="tbodyLeader">
+            </tbody>
+        </table>
+    </div>
 </div>
 
             <!-- 모달 창 HTML 구조 -->
@@ -580,8 +576,8 @@
                 </div>
             </div>
 
-<div class="goto-news" onclick="location.href='newsList.html'">
-    <button class="goto-news-botton">뉴스페이지 바로가기</button>
+<div class="goto-news">
+    <button class="goto-news-botton" onclick="location.href='newsList.html'"><h4>뉴스페이지 바로가기</h4></button>
 </div>
 
 </body>
