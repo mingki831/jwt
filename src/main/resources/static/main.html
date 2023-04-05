@@ -4,26 +4,13 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Title</title>
-    <style>
-        tr {
-            border: 1px solid #444444;
-        }
-
-        th {
-            border: 1px solid #444444;
-        }
-
-        td {
-            border: 1px solid #444444;
-        }
-
-    </style>
     <script>
         $(document).ready(function () {
             // 1. 상위부서 리스트 조회
@@ -453,16 +440,19 @@
     </script>
 </head>
 <body>
-<p>메인 화면</p>
-
-<form id="deleteAdminForm" action="">
-<!--    <a href="login.html"><button id="deleteAdmin" class="deleteAdmin">회원탈퇴</button></a>-->
-    <button id="btn-save" class="deleteAdmin" id="deleteAdmin" >회원탈퇴</button>
-</form>
-<form id="logoutForm">
-    <!--    <button id="btn-logout">로그아웃</button>-->
-    <a href="login.html"><input type="button" value="로그아웃"></a>
-</form>
+<div class="main-image">
+    <form id="deleteAdminForm" action="">
+        <!--    <a href="login.html"><button id="deleteAdmin" class="deleteAdmin">회원탈퇴</button></a>-->
+        <button class="deleteAdmin" id="deleteAdmin" >회원탈퇴</button>
+    </form>
+    <form id="logoutForm">
+        <!--    <button id="btn-logout">로그아웃</button>-->
+        <a href="login.html">
+            <button class="logout" id="logout" >로그아웃</button>
+        </a>
+    </form>
+    메인 이미지
+</div>
 
 <table>
     <tr>
