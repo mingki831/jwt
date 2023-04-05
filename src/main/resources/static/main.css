@@ -33,3 +33,23 @@
   border-radius: 10px;
   background-color: #ffffff;
 }
+
+.content-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goto-news {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

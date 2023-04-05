@@ -439,7 +439,10 @@
 
     </script>
 </head>
+
 <body>
+
+<!-- header -->
 <div class="main-image">
     <form id="deleteAdminForm" action="">
         <!--    <a href="login.html"><button id="deleteAdmin" class="deleteAdmin">회원탈퇴</button></a>-->
@@ -454,56 +457,60 @@
     메인 이미지
 </div>
 
-<table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                <tr>
-                    <th>상위부서</th>
-                </tr>
-                </thead>
-                <tbody id="tbodyDivision">
-                </tbody>
-            </table>
-        </td>
-        <td>
-            <table>
-                <thead>
-                <tr>
-                    <th>하위부서</th>
-                </tr>
-                </thead>
-                <tbody id="tbodyDepartment">
-                </tbody>
-            </table>
-        </td>
-        <td>
-            <table>
-                <thead>
-                <tr>
-                    <th>직원</th>
-                </tr>
-                </thead>
-                <tbody id="tbodyEmployee">
-                </tbody>
-                                <tbody id="tbodyEmployeeRegister">
-                                <input type="button" class="employeeRegister" id="employeeRegister" value="직원 등록">
-                                </tbody>
-                </td>
-                <td>
-                    <table>
-                        <thead>
+<!-- content -->
+<div class="content-title"><h2>Department</h2></div>
+
+<div class="table">
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>상위부서</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbodyDivision">
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>하위부서</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbodyDepartment">
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>직원</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyEmployee">
+                    <tbody id="tbodyEmployeeRegister">
+                        <input type="button" class="employeeRegister" id="employeeRegister" value="직원 등록">
+                    </tbody>
+            </td>
+            <td>
+                <table>
+                    <thead>
                         <tr>
                             <th>리더목록</th>
                         </tr>
-                        </thead>
-                        <tbody id="tbodyLeader">
-                        </tbody>
-                    </table>
-                </td>
-            </table>
-
+                    </thead>
+                    <tbody id="tbodyLeader">
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
 
             <!-- 모달 창 HTML 구조 -->
             <div class="modal fade" id="employeeUpdateModal" tabindex="-1" role="dialog"
@@ -593,10 +600,13 @@
             </div>
 
 </table>
+<br/>
 
-<form>
-    <a href="newsList.html"><input type="button" class="btn btn-primary" value="뉴스페이지"></a>
-</form>
+<div class="goto-news">
+    <form>
+        <a href="newsList.html"><input type="button" class="btn btn-primary" value="뉴스페이지"></a>
+    </form>
+</div>
 
 </body>
 </html>
